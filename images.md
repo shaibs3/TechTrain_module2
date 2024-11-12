@@ -1,20 +1,13 @@
 
 # Images Lab
 
-
-## Setup
-Clone the following repository
-```bash
-git clone https://github.com/shaibs3/containers-tech-train.git
-```
-
 ---
 
 ## Exercise 1: Exploring image creation using single stage build
 
 1. **Run a single stage build:**
    ```bash
-   cd containers-tech-train/module_2/images
+   cd ./images
    docker build -f ./singleStagebuild/Dockerfile . -t single_stage_image
    ```
 
@@ -30,7 +23,7 @@ git clone https://github.com/shaibs3/containers-tech-train.git
 
 1. **Run a single stage build:**
    ```bash
-   cd containers-tech-train/module_2/images
+   cd ./images
    docker build -f ./multyStagebuild/Dockerfile . -t multy_stage_image
    ```
 
@@ -47,3 +40,5 @@ git clone https://github.com/shaibs3/containers-tech-train.git
 1. Try to optimize the image size from exercise 2 by using a slim version of node image
 2. Build the new image
 3. **Question** How much improvement did you get?
+4. Do the same steps for distroless image.
+5. **Question** How much improvement did you get now?
