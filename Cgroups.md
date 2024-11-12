@@ -1,9 +1,4 @@
-# Hands-on Session: Exploring Container Filesystems
-
-## Objectives:
-- Understand how namespaces isolate different aspects of the system.
-- Gain practical experience working with process, user, and network namespaces.
-- Use the `unshare` command to create and interact with namespaces.
+# Hands-on Session: Exploring Cgroups
 
 ---
 
@@ -34,7 +29,10 @@ Goal:
 Limit CPU usage for a process to demonstrate cgroup resource control.
 
 **Exercise**:
-
+1. Install stress:
+    ```bash
+    sudo apt install stress -y
+    ```
 1. Set the CPU quota (e.g., limit to 20% of a CPU core):
     ```bash
     sudo sh -c "echo 20000 > /sys/fs/cgroup/cpu/my_cgroup/cpu.cfs_quota_us"
@@ -61,16 +59,19 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
 2. Set a memory limit:
     ```bash
     sudo sh -c "echo 100M > /sys/fs/cgroup/memory/my_memory_cgroup/memory.limit_in_bytes"
+    sudo sh -c "echo 100M > /sys/fs/cgroup/memory/my_memory_cgroup/memory.memsw.limit_in_bytes"
     ```
 3. Add the current process to the memory cgroup:
     ```bash
     sudo sh -c "echo ${CURRENT_PROCESS} > /sys/fs/cgroup/memory/my_memory_cgroup/cgroup.procs"
     ```
-4. Run a memory stress test and verify the program runs successfully:
+4. Run a memory stress test:
     ```bash
-    stress --vm 1 --vm-bytes 100M --timeout 2
+    stress --vm 1 --vm-bytes 90M --timeout 2
     ```
-5. Run a memory stress test and verify the program fails:
+5. **Question**: Did the program run successfully?
+6. Run a memory stress test and verify the program fails:
     ```bash
-    stress --vm 1 --vm-bytes 300M --timeout 2
+    stress --vm 1 --vm-bytes 150M --timeout 2
     ```
+7.**Question**: Did the program run successfully?
