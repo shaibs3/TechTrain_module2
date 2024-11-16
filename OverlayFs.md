@@ -48,18 +48,14 @@ mkdir -p /tmp/{lower,upper,merged,work}
    ls /tmp/upper
    cat /tmp/upper/file1.txt
    ```
-   You should see a new version of `file1.txt` in the upper directory, containing your changes.
+3. Compare the contents of **file1.txt** in the upper directory to **file1.txt** in the lower directory. Which file will be reflected in /tmp/merged ? 
 
-3. **Create a New File in the Merged Directory:**
+4. **Create a New File in the Merged Directory:**
    ```bash
    echo "New file in merged directory" > /tmp/merged/file3.txt
    ```
+5. On which directory, will this new file be created? **/tmp/lower** or **/tmp/upper** and why?
 
-4. **Verify the New File in the Upper Directory:**
-   ```bash
-   ls /tmp/upper
-   ```
-   The new file `file3.txt` will only appear in the upper directory, as it was created after the overlay mount.
 
 ---
 
