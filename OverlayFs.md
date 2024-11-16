@@ -84,7 +84,7 @@ mkdir -p /tmp/{lower,upper,merged,work}
    ```bash
    ls /tmp/merged
    ```
-   The merged directory should no longer show `file2.txt`, as it’s hidden by the overlay filesystem.
+   **Question** Do you see file2.txt in the merged directory?
 
 5. **Cleanup:**
    ```bash
@@ -92,6 +92,3 @@ mkdir -p /tmp/{lower,upper,merged,work}
    ```
 
 ---
-
-
-After completing these exercises, you should have a better understanding of how the overlay filesystem uses lower, upper, and merged directories to manage data layers.
