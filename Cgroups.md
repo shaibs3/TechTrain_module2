@@ -47,7 +47,7 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
     top -p $(ps --ppid $(pgrep -f stress) | awk '{print $1}' | tail -n 1)
     ```
 4. **Question** What will happen to the cpu usage of a single stress program if you run the command multiple times?
-   1. Run the command from step 2. What do you think will be the cpu usage? Can you explain why this result of the cpu usage?
+   1. To verify your assumption, Run the command from step 2 again. Can you explain the results?
 
 5. **Cleanup:**
    ```bash
@@ -57,15 +57,15 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
    ```
 ### 3. Limiting Memory usage
 Goal:
-Limit CPU usage for a process to demonstrate cgroup resource control.
+Limit CPU usage for a process to demonstrate Cgroup resource control.
 
 **Exercise**:
 
-1. Create a new cgroup for memory:
+1. Create a new Cgroup for memory:
     ```bash
     sudo mkdir /sys/fs/cgroup/memory/my_memory_cgroup
     ```
-2. Set a memory limit:
+2. Set a memory limit of 100M to the processes inside the Cgroup:
     ```bash
     sudo sh -c "echo 100M > /sys/fs/cgroup/memory/my_memory_cgroup/memory.limit_in_bytes"
     sudo sh -c "echo 100M > /sys/fs/cgroup/memory/my_memory_cgroup/memory.memsw.limit_in_bytes"
@@ -88,3 +88,8 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
     stress --vm 1 --vm-bytes 150M --timeout 2
     ```
 8. **Question**: Did the program run successfully?
+9. **Cleanup:**
+```bash
+sudo sh -c "echo ${CURRENT_PROCESS}> /sys/fs/cgroup/memory/cgroup.procs"
+sudo rmdir /sys/fs/cgroup/memory/my_memory_cgroup
+```
