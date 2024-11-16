@@ -52,6 +52,8 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
 5. **Cleanup:**
    ```bash
    sudo pkill -f stress
+   sudo sh -c "echo ${CURRENT_PROCESS}> /sys/fs/cgroup/cpu/cgroup.procs"
+   sudo rmdir /sys/fs/cgroup/cpu/my_cgroup
    ```
 ### 3. Limiting Memory usage
 Goal:
@@ -68,17 +70,21 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
     sudo sh -c "echo 100M > /sys/fs/cgroup/memory/my_memory_cgroup/memory.limit_in_bytes"
     sudo sh -c "echo 100M > /sys/fs/cgroup/memory/my_memory_cgroup/memory.memsw.limit_in_bytes"
     ```
-3. Add the current process to the memory cgroup:
+2. Get the current shell PID:
+   ```bash
+   export CURRENT_PROCESS=`echo $$`
+      
+4. Add the current process to the memory cgroup:
     ```bash
     sudo sh -c "echo ${CURRENT_PROCESS} > /sys/fs/cgroup/memory/my_memory_cgroup/cgroup.procs"
     ```
-4. Run a memory stress test:
+5. Run a memory stress test:
     ```bash
     stress --vm 1 --vm-bytes 90M --timeout 2
     ```
-5. **Question**: Did the program run successfully?
-6. Run a memory stress test and verify the program fails:
+6. **Question**: Did the program run successfully?
+7. Run a memory stress test and verify the program fails:
     ```bash
     stress --vm 1 --vm-bytes 150M --timeout 2
     ```
-7.**Question**: Did the program run successfully?
+8. **Question**: Did the program run successfully?
