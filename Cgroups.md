@@ -46,6 +46,13 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
     ```bash
     top -p $(ps --ppid $(pgrep -f stress) | awk '{print $1}' | tail -n 1)
     ```
+4. **Question** What will happen to the cpu usage of a single stress program if you run the command multiple times?
+   1. Run the command from step 2. What do you think will be the cpu usage? Can you explain why this result of the cpu usage?
+
+5. **Cleanup:**
+   ```bash
+   sudo pkill -f stress
+   ```
 ### 3. Limiting Memory usage
 Goal:
 Limit CPU usage for a process to demonstrate cgroup resource control.
