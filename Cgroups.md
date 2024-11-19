@@ -47,7 +47,7 @@ Limit CPU usage for a process to demonstrate cgroup resource control.
     top -p $(ps --ppid $(pgrep -f stress) | awk '{print $1}' | tail -n 1)
     ```
 4. **Question** What will happen to the cpu usage of a single stress program if you run the command multiple times?
-   1. To verify your assumption, Run the command from step 2 again. Can you explain the results?
+   1. To verify your assumption, Run the command from step 2 again and check the cpu usage of a single stress program using the command from step 3. Can you explain the results?
 
 5. **Cleanup:**
    ```bash

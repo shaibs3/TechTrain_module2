@@ -43,11 +43,11 @@ mkdir -p /tmp/{lower,upper,merged,work}
    echo "Modified content in merged directory" >> /tmp/merged/file1.txt
    ```
 
-2. **Observe Changes in the Upper Directory:**
+2. **Verify that file1.txt was created in the Upper Directory:**
    ```bash
    ls /tmp/upper
-   cat /tmp/upper/file1.txt
    ```
+   
 3. Compare the contents of **file1.txt** in the upper directory to **file1.txt** in the lower directory. Which file will be reflected in /tmp/merged ? 
 
 4. **Create a New File in the Merged Directory:**
