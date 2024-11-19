@@ -79,7 +79,7 @@
 
 ---
 
-## Exercise 3: optimizing image size
+## Exercise 4: optimizing image size
 1. Try to optimize the image size from exercise 2 by using a slim version of node image. Do the relevant change in the Dockerfile
 2. Build the new image and tag it with a slim suffix. i.e **docker build -f ./multyStagebuild/Dockerfile . -t multy_stage_image_slim**
 3. **Question** How much improvement did you get?
