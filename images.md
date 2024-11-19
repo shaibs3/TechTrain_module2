@@ -12,7 +12,7 @@
 
 2. **Build the container and Observe the output.Each RUN, COPY, and other command in the Dockerfile corresponds to a separate layer:**
    ```bash
-    docker build -t caching-demo:1.0 .
+    docker build -t caching-demo:1.0 .  
    ```
 3. **Rebuild the Image Without Changes**
    ```bash
@@ -28,6 +28,17 @@
    docker build -t caching-demo:1.0 .
    ```
 7. Observe the output. **Question** why is the output has changed compared to the output in step 4
+
+8. Add any kind of package install to the Dockerfile right after the RUN apt-get update command. i.e
+   ```bash
+   apt install -y tcpdump
+   ```
+9. **Rebuild the image**
+   ```bash
+   docker build -t caching-demo:1.0 .
+      ```
+7. Observe the output. **Question** how many layers were taken from cache this time?
+
 ---
 ## Exercise 2: Exploring image creation using single stage build
 
