@@ -19,28 +19,34 @@
    docker build -t caching-demo:1.0 .
    ```
 4. **Observe the output this time. You will see that Docker uses cached layers for all steps.**
-5. **Modify the sample.txt File. Do a small change to the file**
+5. **Observe the build time. You should observe drastic decrease**
+
+---
+## Exercise 2: Exploring image changes and implications on the build process
+
+1. **Use the same wwork directory as exercise 1. i.e `cd ./TechTrain_module2/imageCaching`
+2. **Modify the sample.txt File. Do a small change to the file**
     ```bash
     echo "This file has been updated!" > sample.txt
     ```
-6. **Rebuild the image**
+3. **Rebuild the image**
    ```bash
    docker build -t caching-demo:1.0 .
    ```
-7. Observe the output. **Question** why is the output has changed compared to the output in step 4
+4. Observe the output. **Question** why is the output has changed compared to the output in step 4
 
-8. Add any kind of package install to the Dockerfile right after the RUN apt-get update command. i.e
+5. Add any kind of package install to the Dockerfile right after the RUN apt-get update command. i.e
    ```bash
    apt install -y tcpdump
    ```
-9. **Rebuild the image**
+6. **Rebuild the image**
    ```bash
    docker build -t caching-demo:1.0 .
       ```
-7. Observe the output. **Question** how many layers were taken from cache this time?
+7. Observe the output. **Question** how many layers were taken from cache this time?, Observe the effect on the total build time
 
 ---
-## Exercise 2: Exploring image creation using single stage build
+## Exercise 3: Exploring image creation using single stage build
 
 1. **Run a single stage build:**
    ```bash
@@ -60,7 +66,7 @@
    ```
 ---
 
-## Exercise 3: Exploring image creation using a multy stage build
+## Exercise 4: Exploring image creation using a multy stage build
 
 1. **Run a single stage build:**
    ```bash
@@ -79,7 +85,7 @@
 
 ---
 
-## Exercise 4: optimizing image size
+## Exercise 5: optimizing image size
 1. Try to optimize the image size from exercise 2 by using a slim version of node image. Do the relevant change in the Dockerfile
 2. Build the new image and tag it with a slim suffix. i.e **docker build -f ./multyStagebuild/Dockerfile . -t multy_stage_image_slim**
 3. **Question** How much improvement did you get?
