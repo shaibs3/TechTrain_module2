@@ -54,7 +54,7 @@
    docker build -f ./singleStagebuild/Dockerfile . -t single_stage_image
    ```
 
-2. **Create a container from the image and test it is running by using the browser:**
+2. **Create a container from the image and test it is running properly:**
    ```bash
    docker run -p 4000:3000 --name single_stage_container -d single_stage_image
    sleep 1
@@ -74,7 +74,7 @@
    docker build -f ./multyStagebuild/Dockerfile . -t multy_stage_image
    ```
 
-2. **Create a container from the image and test it is running by using the browser:**
+2. **Create a container from the image and test that it is running properly:**
    ```bash
    docker run -p 5000:3000 --name multy_stage_container -d multy_stage_image
    sleep 1
@@ -88,6 +88,6 @@
 ## Exercise 5: optimizing image size
 1. Try to optimize the image size from exercise 2 by using a slim version of node image. Do the relevant change in the Dockerfile
 2. Build the new image and tag it with a slim suffix. i.e **docker build -f ./multyStagebuild/Dockerfile . -t multy_stage_image_slim**
-3. **Question** How much improvement did you get?
+3. **Question** How much improvement did you get in saving image size?
 4. Do the same steps for a distroless image.
-5. **Question** How much improvement did you get now?
+5. **Question** How much improvement did you get now in saving image size?
